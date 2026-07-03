@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Mi Arquitecta Favorita</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Quicksand:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #fdf6f0 0%, #f5e6d3 50%, #e8ddd4 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        /* Corazones flotantes */
+        .hearts {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            color: #d4a574;
+            font-size: 20px;
+            animation: floatUp 8s infinite ease-in;
+            opacity: 0;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+                transform: scale(1);
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        /* Tarjeta principal */
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 40px 35px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 
+                0 20px 60px rgba(139, 90, 43, 0.15),
+                0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+            position: relative;
+            z-index: 1;
+            animation: appear 1.5s ease-out;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: scale(0.8) translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* Foto - AQUI PONES TU FOTO */
+        .photo-container {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 25px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid #c9a87c;
+            box-shadow: 0 10px 30px rgba(160, 130, 109, 0.3);
+            position: relative;
+            background: #f0e6d8;
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Título */
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.6rem;
+            color: #5d4e37;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 0.95rem;
+            color: #a0826d;
+            margin-bottom: 25px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* Mensaje */
+        .message {
+            font-size: 1.05rem;
+            line-height: 2;
+            color: #6b5b4f;
+            margin-bottom: 25px;
+        }
+
+        .message p {
+            margin-bottom: 12px;
+        }
+
+        .highlight {
+            color: #c9a87c;
+            font-weight: 600;
+        }
+
+        /* Firma */
+        .signature-box {
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 2px dashed #e0d5c8;
+        }
+
+        .signature-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: #5d4e37;
+            line-height: 1.4;
+        }
+
+        .signature-ing {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.85rem;
+            color: #a0826d;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-top: 8px;
+        }
+
+        /* Botón */
+        .support-btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 15px 35px;
+            background: linear-gradient(135deg, #c9a87c, #a0826d);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 25px rgba(160, 130, 109, 0.3);
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1rem;
+        }
+
+        .support-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(160, 130, 109, 0.4);
+        }
+
+        /* Confeti */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2rem; }
+            .card { padding: 30px 20px; }
+            .photo-container { width: 120px; height: 120px; }
+            .signature-text { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts" id="hearts"></div>
+
+    <div class="card">
+        <!-- AQUI PONES TU FOTO - Cambia "tu-foto.jpg" por el nombre de tu archivo -->
+        <div class="photo-container">
+            <img src="arqui.jpeg" alt="Mi hermana">
+        </div>
+        
+        <h1>Para Mi Arquitecta<br>Favorita</h1>
+        <div class="subtitle">Con todo mi cariño</div>
+        
+        <div class="message">
+            <p>
+                Sé que estudiar arquitectura no es fácil.<br>
+                Las noches largas, los planos, las maquetas,<br>
+                los días en que todo parece no salir bien...
+            </p>
+            <p>
+                Pero quiero que sepas que <span class="highlight">estoy aquí</span>,<br>
+                que te admiro por tu dedicación,<br>
+                y que sé que vas a lograr cosas increíbles.
+            </p>
+            <p>
+                Cada edificio que diseñes,<br>
+                cada espacio que transformes,<br>
+                será una prueba de tu talento y esfuerzo.
+            </p>
+            <p style="font-size: 1.15rem; color: #c9a87c; font-weight: 600; margin-top: 20px;">
+                ¡Sigue adelante, hermana!<br>
+                El mundo necesita tu visión. 🌟
+            </p>
+        </div>
+
+        <!-- FIRMA -->
+        <div class="signature-box">
+            <div class="signature-text">Con todo amor,<br>tu hermano ingeniero</div>
+            <div class="signature-ing">I N G .</div>
+        </div>
+        
+        <button class="support-btn" onclick="celebrate()">
+            💪 ¡Tú puedes! Click aquí
+        </button>
+    </div>
+
+    <script>
+        function createHearts() {
+            const container = document.getElementById('hearts');
+            const symbols = ['❤️', '🏛️', '✨', '⭐', '📐', '🏗️', '💛', '🔧', '⚙️'];
+            
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDuration = (6 + Math.random() * 4) + 's';
+                heart.style.fontSize = (15 + Math.random() * 20) + 'px';
+                container.appendChild(heart);
+                
+                setTimeout(() => heart.remove(), 10000);
+            }, 800);
+        }
+
+        function celebrate() {
+            const colors = ['#c9a87c', '#d4a574', '#f5e6d3', '#a0826d', '#ffd700', '#ff6b6b', '#27ae60'];
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * window.innerWidth + 'px';
+                confetti.style.top = window.innerHeight + 'px';
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                confetti.style.width = (5 + Math.random() * 10) + 'px';
+                confetti.style.height = (5 + Math.random() * 10) + 'px';
+                document.body.appendChild(confetti);
+                
+                const angle = Math.random() * Math.PI;
+                const velocity = 10 + Math.random() * 20;
+                const vx = Math.cos(angle) * velocity;
+                const vy = -Math.sin(angle) * velocity - 10;
+                
+                let x = parseFloat(confetti.style.left);
+                let y = parseFloat(confetti.style.top);
+                let opacity = 1;
+                
+                const animate = () => {
+                    x += vx * 0.5;
+                    y += vy * 0.5;
+                    opacity -= 0.02;
+                    
+                    confetti.style.left = x + 'px';
+                    confetti.style.top = y + 'px';
+                    confetti.style.opacity = opacity;
+                    confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                    
+                    if (opacity > 0) {
+                        requestAnimationFrame(animate);
+                    } else {
+                        confetti.remove();
+                    }
+                };
+                
+                requestAnimationFrame(animate);
+            }
+
+            const btn = document.querySelector('.support-btn');
+            btn.textContent = '🎉 ¡Lo estás haciendo genial!';
+            btn.style.background = 'linear-gradient(135deg, #27ae60, #2ecc71)';
+            
+            setTimeout(() => {
+                btn.textContent = '💪 ¡Tú puedes! Click aquí';
+                btn.style.background = '';
+            }, 3000);
+        }
+
+        createHearts();
+    </script>
+</body>
+</html>
