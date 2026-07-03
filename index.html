@@ -20,7 +20,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
+            overflow-x: hidden;
             padding: 20px;
         }
 
@@ -86,12 +86,12 @@
             }
         }
 
-        /* Foto - AQUI PONES TU FOTO */
+        /* Foto - AQUI PONES TU FOTO, SALE COMPLETA */
         .photo-container {
-            width: 150px;
-            height: 150px;
+            width: 200px;
+            height: 200px;
             margin: 0 auto 25px;
-            border-radius: 50%;
+            border-radius: 20px;
             overflow: hidden;
             border: 4px solid #c9a87c;
             box-shadow: 0 10px 30px rgba(160, 130, 109, 0.3);
@@ -102,7 +102,8 @@
         .photo-container img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
+            background: #f0e6d8;
         }
 
         /* Título */
@@ -198,10 +199,11 @@
         @media (max-width: 480px) {
             h1 { font-size: 2rem; }
             .card { padding: 30px 20px; }
-            .photo-container { width: 120px; height: 120px; }
+            .photo-container { width: 160px; height: 160px; }
             .signature-text { font-size: 1.5rem; }
         }
     </style>
+<base target="_blank">
 </head>
 <body>
     <div class="hearts" id="hearts"></div>
@@ -212,27 +214,27 @@
             <img src="arqui.jpeg" alt="Mi hermana">
         </div>
         
-        <h1>Para Mi Arquitecta<br>Favorita</h1>
+        <h1>Para Mi Futura<br>Arquitecta</h1>
         <div class="subtitle">Con todo mi cariño</div>
         
         <div class="message">
             <p>
-                Sé que estudiar arquitectura no es fácil.<br>
-                Las noches largas, los planos, las maquetas,<br>
-                los días en que todo parece no salir bien...
+                Sé que estás comenzando esta hermosa carrera<br>
+                y que puede parecer abrumador al principio.<br>
+                Los planos, las maquetas, las noches de estudio...
             </p>
             <p>
                 Pero quiero que sepas que <span class="highlight">estoy aquí</span>,<br>
-                que te admiro por tu dedicación,<br>
-                y que sé que vas a lograr cosas increíbles.
+                que te admiro por atreverte a soñar en grande,<br>
+                y que sé que vas a construir cosas increíbles.
             </p>
             <p>
-                Cada edificio que diseñes,<br>
-                cada espacio que transformes,<br>
-                será una prueba de tu talento y esfuerzo.
+                Cada paso que des, cada dibujo que hagas,<br>
+                cada idea que plasmes en papel,<br>
+                te acerca más a transformar el mundo.
             </p>
             <p style="font-size: 1.15rem; color: #c9a87c; font-weight: 600; margin-top: 20px;">
-                ¡Sigue adelante, hermana!<br>
+                ¡Este es solo el comienzo, hermana!<br>
                 El mundo necesita tu visión. 🌟
             </p>
         </div>
